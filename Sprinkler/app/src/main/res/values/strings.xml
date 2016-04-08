@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Sprinkler</string>
+
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_main_screen">SPRNKLR</string>
+    <string name="title_activity_sample_values">SampleValues</string>
+    <string name="title_activity_dashboard">Dashboard</string>
+</resources>
