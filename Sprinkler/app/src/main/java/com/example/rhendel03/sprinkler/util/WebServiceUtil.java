@@ -69,7 +69,7 @@ public class WebServiceUtil {
             os.flush();
             os.close();
 
-            if (urlConn.getResponseCode() != HttpURLConnection.HTTP_OK) {
+            if (!(urlConn.getResponseCode() == HttpURLConnection.HTTP_OK ||urlConn.getResponseCode() == HttpURLConnection.HTTP_CREATED  )) {
                 throw new RuntimeException("Failed: HTTP error code: " + urlConn.getResponseCode());
             }
 

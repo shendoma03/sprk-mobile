@@ -2,7 +2,9 @@ package com.example.rhendel03.sprinkler;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -17,7 +19,7 @@ import com.example.rhendel03.sprinkler.webservices.LoginAsyncTask;
 
 
 public class LoginScreen extends Activity implements LoginAsyncInterface{
-    public static final String MyPREFERENCES = "MyPrefs" ;
+    //public static final String MyPREFERENCES = "MyPrefs" ;
     EditText etusername;
 
     EditText etpassword;
@@ -32,6 +34,7 @@ public class LoginScreen extends Activity implements LoginAsyncInterface{
             public void onClick(View view) {
                 String vuser = etusername.getText().toString();
                 String vpass = etpassword.getText().toString();
+
                 (new LoginAsyncTask(LoginScreen.this)).execute(new String[]{vuser, vpass});
             }
         });
@@ -47,11 +50,13 @@ public class LoginScreen extends Activity implements LoginAsyncInterface{
     }
 
 
+
     @Override
     public void onSuccessfulLogin() {
-        Intent intent = new Intent(getApplicationContext(), Dashboard.class);
-        startActivity(intent);
-        finish();
+//        Intent intent = new Intent(getApplicationContext(), Dashboard.class);
+//        startActivity(intent);
+//        finish();
+
     }
 
     @Override

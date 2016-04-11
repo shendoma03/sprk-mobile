@@ -7,4 +7,5 @@ import org.json.JSONObject;
  */
 public interface ScanValueAsyncInterface {
     public void onGetValues(JSONObject values);
+    public void onGetfail(JSONObject values);
 }

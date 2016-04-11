@@ -36,20 +36,20 @@ public class RequestAsyncTask extends AsyncTask<String, Void, JSONObject> {
         // call the appropriate methods based on the status
         if(this.postInterface != null) {
             if (jsonObject != null && jsonObject.optString("status", "FAIL").equals("SUCCESS")) {
-                this.postInterface.onSuccessfulLogin();
+                this.postInterface.onRequestSuccess();
             }
             else {
-                this.postInterface.onFailedLogin();
+                this.postInterface.onRequestFailed();
             }
         }
     }
 
 
-    public RequestAsyncTask(LoginAsyncInterface postInterface) {
+    public RequestAsyncTask(RequestAsyncInterface postInterface) {
         this.postInterface = postInterface;
     }
 
-    private LoginAsyncInterface postInterface;
+    private RequestAsyncInterface postInterface;
 
 
 }

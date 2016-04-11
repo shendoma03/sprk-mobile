@@ -1,10 +1,6 @@
 package com.example.rhendel03.sprinkler.webservices;
 
-import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.AsyncTask;
-import android.os.Bundle;
-
 
 import com.example.rhendel03.sprinkler.SprkConfig;
 import com.example.rhendel03.sprinkler.util.WebServiceUtil;
@@ -14,59 +10,46 @@ import org.json.JSONObject;
 import java.io.InputStream;
 
 /**
- * Created by rhendel03 on 12/13/2015.
+ * Created by rhendel03 on 4/10/2016.
  */
-public class LoginAsyncTask extends AsyncTask<String, Void, JSONObject> {
+public class RequestAsyncTaskOff extends AsyncTask<String, Void, JSONObject> {
     @Override
     protected JSONObject doInBackground(String... strings) {
-
-        String url = SprkConfig.WEBSERVICE_URL + "/sprinklrws/services/access/validate/user";
+        String url = SprkConfig.WEBSERVICE_URL + "/sprinklrws/services/request/off/operation";
         InputStream inputStream = null;
         String result = "";
 
         try {
-            JSONObject input = new JSONObject();
-            input.accumulate("userName", strings[0]);
-            input.accumulate("password", strings[1]);
-
-            return WebServiceUtil.postWS(url, input);
+            return WebServiceUtil.postWS(url, new JSONObject());
         }
         catch(Exception e) {
             e.printStackTrace();
-
             return null;
         }
     }
-
-
     @Override
     protected void onPostExecute(JSONObject jsonObject) {
         super.onPostExecute(jsonObject);
 
         // if we called the AsyncTask with the activity object as the constructor parameter
         // call the appropriate methods based on the status
-        if(this.activity != null) {
+        if(this.postInterface != null) {
             if (jsonObject != null && jsonObject.optString("status", "FAIL").equals("SUCCESS")) {
-
-
-                this.activity.onSuccessfulLogin();
+                this.postInterface.onSuccessfuloff();
             }
             else {
-                this.activity.onFailedLogin();
-    }
-}
-    }
-
-
-
-    public LoginAsyncTask() {
-        super();
+                this.postInterface.onFailedoff();
+            }
+        }
     }
 
-    private LoginAsyncInterface activity;
 
-    public LoginAsyncTask(LoginAsyncInterface activity) {
-        this.activity = activity;
+    public RequestAsyncTaskOff(RequestAsyncOffInterface postInterface) {
+        this.postInterface = postInterface;
     }
+
+    private RequestAsyncOffInterface postInterface;
+
+
 }
 
