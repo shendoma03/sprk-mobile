@@ -4,9 +4,10 @@
     <item name="primary" type="color">#558B2F</item>
     <item name="primary_dark" type="color">#33691E</item>
     <item name="accent" type="color">#FAFAFA</item>
-    <item name="windowBackground" type="color">#FAFAFA</item>
+    <item name="windowBackground" type="color">#EEEEEE</item>
     <item name="black" type="color">#000000</item>
-    <item name="relativeColor" type="color">#EEEEEE</item>
+
     <item name="switchThumb" type="color">#33691E</item>
     <item name="switchTrack" type="color">#757575</item>
+    <item name="relativeColor" type="color">#FAFAFA</item>
 </resources>
